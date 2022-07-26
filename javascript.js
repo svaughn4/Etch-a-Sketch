@@ -1,4 +1,6 @@
-let size = 16; 
+let size;  
+// create the parent node
+const container = document.querySelector('.container'); 
 
 // adds popup to ask for user's input for grid 
 document.getElementById('myBtn').addEventListener('click', () => { 
@@ -8,12 +10,14 @@ document.getElementById('myBtn').addEventListener('click', () => {
     if (input == null || input > 100 || input == NaN) { 
         alert("You must enter a valid number equal to or less than 100");
     } else { 
-        makeGrid(size);
+        if(container.firstChild == null) { 
+            makeGrid(size);
+        } else {  
+            cleared();
+            makeGrid(size);
+        } 
     }
 });  
-
-// create the parent node
-const container = document.querySelector('.container'); 
 
 // create the grid based on input
 function makeGrid(size) {
@@ -22,9 +26,16 @@ function makeGrid(size) {
         const mini = document.createElement('div');  
         mini.classList.add('row');
         for (let j = 1; j <= size; j++) { 
-            const child = document.createElement('div');
-            child.classList.add('cell'); 
-            child.style.borderColor='red';
+            let child = document.createElement('div');
+            child.classList.add('cell');  
+
+            // add border to each cell
+            child.style.border='1px solid black';  
+
+            // add hover event listener to each cell
+            child.addEventListener('mouseover', () => {
+                child.setAttribute('style', 'background-color: black')
+            })
             //child.textContent= 'hey'; 
             mini.appendChild(child);
         }
@@ -32,12 +43,9 @@ function makeGrid(size) {
     }  
 }
 
-// add hover event listener to each cell
-document.querySelectorAll('.cell').forEach(div => {
-    div.style.border = '1px solid black'; 
-    div.addEventListener('mouseover', event => { 
-        div.setAttribute('style', 'background-color: black;')
-    });
-})
-
-
+// clears away current grid for the new requested grid
+function cleared() { 
+    while(container.firstChild) { 
+        container.removeChild(container.firstChild);
+    }
+}
