@@ -24,3 +24,5 @@ document.querySelectorAll('.cell').forEach(div => {
     });
 })
 
+
+// adds popup to ask for user's input for grid 
