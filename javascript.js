@@ -16,8 +16,11 @@ for(let i = 1; i <= 16; i++) {
     container.appendChild(mini);
 } 
 
+// add hover event listener to each cell
 document.querySelectorAll('.cell').forEach(div => {
-    div.style.border = '1px solid black';
+    div.style.border = '1px solid black'; 
+    div.addEventListener('mouseover', event => { 
+        div.setAttribute('style', 'background-color: black;')
+    });
 })
-
 
