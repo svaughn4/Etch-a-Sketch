@@ -26,3 +26,13 @@ document.querySelectorAll('.cell').forEach(div => {
 
 
 // adds popup to ask for user's input for grid 
+document.getElementById('myBtn').addEventListener('click', () => { 
+    let input = prompt("Enter the number of squares per side you want");
+    if (input != null) { 
+        gridSize();
+    }
+}); 
+
+// asks for number of squares per side for the new grid
+function gridSize() { 
+}
