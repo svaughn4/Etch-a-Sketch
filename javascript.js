@@ -13,7 +13,7 @@ document.getElementById('myBtn').addEventListener('click', () => {
     if (input == null || input > 100 || input == NaN || input == 0) { 
         alert("You must enter a valid number equal to or less than 100");
     } else { 
-        length = parseFloat(((1000 / (size * 2)) ** 0.5).toFixed(2)); 
+        length = parseFloat((1000 / size).toFixed(2)); 
         //console.log("length: ", length);
         if(container.firstChild == null) { 
             makeGrid(size);
