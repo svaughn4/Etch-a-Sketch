@@ -25,7 +25,7 @@ function makeCell () {
     div.style.width=(`${length}px`);  
     div.style.height=(`${length}px`);
     div.addEventListener('mouseover', () => { 
-        div.setAttribute('style', 'background-color: black')
+        div.classList.add('color');
     }) 
     return div;
 }
