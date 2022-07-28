@@ -9,18 +9,12 @@ const container = document.querySelector('.container');
 document.getElementById('myBtn').addEventListener('click', () => { 
     let input = prompt("Enter the number of squares per side you want"); 
     size = parseFloat(input); 
-    //console.log("size: ", size);
+
     if (input == null || input > 100 || input == NaN || input == 0) { 
         alert("You must enter a valid number equal to or less than 100");
     } else { 
         length = parseFloat((1000 / size).toFixed(2)); 
-        //console.log("length: ", length);
-        if(container.firstChild == null) { 
-            makeGrid(size);
-        } else {  
-            cleared();
-            makeGrid(size);
-        } 
+        makeGrid(size);
     }
 });  
 
@@ -46,9 +40,21 @@ function makeGrid(size) {
     }  
 }
 
+
+// when clicked on, clears away current grid
+document.getElementById('clear').addEventListener('click', () => cleared()); 
+
 // clears away current grid
 function cleared() { 
     while(container.firstChild) { 
         container.removeChild(container.firstChild);
     }
-}
+} 
+
+
+// if(container.firstChild == null) { 
+//     makeGrid(size);
+// } else {  
+//     cleared();
+//     makeGrid(size);
+// } 
